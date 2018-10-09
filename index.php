@@ -24,7 +24,7 @@
           Username: <input type="text" name="username"><br />
           Password: <input type="password" name="password" autocomplete="off" placeholder="******"><br />
           <input type="submit" name="submit" value=" Login ">
-          <span><?php if(isset($_SESSION['error']) && !$_SESSION['error'] == "") echo $_SESSION['error']; ?></span>
+          <span><?php if(isset($_SESSION['error'])) echo $_SESSION['error']; ?></span>
         </form>
       </div>
     </div>
