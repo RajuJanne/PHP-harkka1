@@ -19,7 +19,7 @@
     if ($auth["{$user}"] == $pass)
     {
         $_SESSION["logged_user"] = $user;
-        $_SESSION['error'] = "";
+        unset($_SESSION['error']);
         header("location: success.php");
     }
     else {
