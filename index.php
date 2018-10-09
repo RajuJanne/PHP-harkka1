@@ -1,9 +1,9 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
-	<?php session_start(); ?>
   </head>
   <body>
     <!-- Tehkää lomake, jossa on kaksi kenttää.
@@ -24,9 +24,12 @@
           Username: <input type="text" name="username"><br />
           Password: <input type="password" name="password" autocomplete="off" placeholder="******"><br />
           <input type="submit" name="submit" value=" Login ">
-          <span><?php if(!$_SESSION['error'] == "") echo $_SESSION['error']; ?></span>
+          <span><?php if(isset($_SESSION['error']) && !$_SESSION['error'] == "") echo $_SESSION['error']; ?></span>
         </form>
       </div>
     </div>
+	<div id="index-login-postit-note">
+		<p>Username = Timo <br />Password = Soini</p>
+	</div>
   </body>
 </html>

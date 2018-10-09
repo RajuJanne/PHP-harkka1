@@ -6,19 +6,19 @@
           Session pitää muistaa kirjautumisenne ja tarjota kirjautuneelle logout-linkki.
 -->
 <?php
-
+  session_start();
   $auth = array(
     // PW SECURITY THRU THE R00F
-    "testuser1" => "testpass1"
+    "Timo" => "Soini"
   );
-  $user = strip_tags($_POST['user']);
-  $pass = hash(strip_tags($_POST['password']);
+  $user = strip_tags($_POST['username']);
+  $pass = strip_tags($_POST['password']);
 
-  if(isset($_POST['username']) && isset($_POST['password'])){
+  if(!$_POST['username'] == "" && !$_POST['password'] == ""){
 
-    if $auth[$user] == $pass
+    if ($auth["{$user}"] == $pass)
     {
-        $_SESSION['logged_user'] = $user;
+        $_SESSION["logged_user"] = $user;
         $_SESSION['error'] = "";
         header("location: success.php");
     }
@@ -27,5 +27,9 @@
       $_SESSION['error'] = "Wrong password!";
     }
   }
-
-  ?>
+  else
+  {
+	  header("location: index.php");
+	  $_SESSION['error'] = "You must fill both fields!";
+  }
+?>
