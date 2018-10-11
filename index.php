@@ -19,18 +19,40 @@
   Kirjautuneena oleminen tarkoittaa siis sitä, että vaikka päivitätte selaimen tai suljette kyseisen käsittelijävälilehden sekä palatessanne käsittelijä muistaa edelleen, että olette kirjautuneena.
 
   Onnea! -->
-  <div id="index-login-form-parent">
-    <div id="index-login-form">
+<div>
+<?php
+if(!isset($_SESSION["logged_user"])) {
+  echo '<div id="index-login-form">
       <form id="login" action="kasittelija.php" method="post">
         Username: <input type="text" name="username"><br />
         Password: <input type="password" name="password" autocomplete="off" placeholder="******"><br />
         <input type="submit" name="submit" value=" Login ">
-        <span><?php if(isset($_SESSION['error'])) echo $_SESSION['error']; ?></span>
-      </form>
+        <span> ';
+  if(isset($_SESSION["error"])){ echo $_SESSION["error"]; }
+  echo '</span>
+        </form>
+      </div>
     </div>
-  </div>
-  <div id="index-login-postit-note">
-    <p>Username = Timo <br />Password = Soini</p>
-  </div>
+    <div id="index-login-postit-note">
+      <p>Username = Timo <br />Password = Soini</p>
+    </div>';
+}
+
+
+else {
+    echo '<div id="success-confirm">
+      <p> logged in as ' . $_SESSION["logged_user"] .'</p>
+      <a href="https://www.w3schools.com/php/default.asp" target="_blank">W3Schools PHP tutorial</a> <br />
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Great tutorial on PHP sessions</a>
+    </div>
+    <div id="logout-parent">
+      <div id="logout">
+        <form id="logout" action="logout.php" method="post">
+          <input type="submit" name="logout" value=" Log out ">
+        </form>
+      </div>
+    </div>';
+  } ?>
+</div>
 </body>
 </html>

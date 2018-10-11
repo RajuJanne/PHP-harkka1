@@ -20,16 +20,14 @@ if(!$_POST['username'] == "" && !$_POST['password'] == ""){
   {
     $_SESSION["logged_user"] = $user;
     unset($_SESSION['error']);
-    header("location: success.php");
   }
   else {
-    header("location: index.php");
     $_SESSION['error'] = "Wrong password!";
   }
 }
 else
 {
-  header("location: index.php");
   $_SESSION['error'] = "You must fill both fields!";
 }
+header("location: index.php");
 ?>
