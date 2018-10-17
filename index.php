@@ -26,7 +26,7 @@ if(!isset($_SESSION["logged_user"])) {
       <form id="login" action="kasittelija.php" method="post">
         Username: <input type="text" name="username"><br />
         Password: <input type="password" name="password" autocomplete="off" placeholder="******"><br />
-        <input type="submit" name="submit" value=" Login ">
+        <input type="submit" name="login" value=" Login ">
         <span> ';
   if(isset($_SESSION["error"])){ echo $_SESSION["error"]; }
   echo '</span>
@@ -47,7 +47,7 @@ else {
     </div>
     <div id="logout-parent">
       <div id="logout">
-        <form id="logout" action="logout.php" method="post">
+        <form id="logout" action="kasittelija.php" method="post">
           <input type="submit" name="logout" value=" Log out ">
         </form>
       </div>
