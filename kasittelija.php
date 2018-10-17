@@ -13,21 +13,29 @@ $auth = array(
 );
 $user = strip_tags($_POST['username']);
 $pass = strip_tags($_POST['password']);
+if (isset($_POST['login'])){
+  if(!$_POST['username'] == "" && !$_POST['password'] == ""){
 
-if(!$_POST['username'] == "" && !$_POST['password'] == ""){
-
-  if ($auth[$user] == $pass)
+    if ($auth[$user] == $pass)
+    {
+      $_SESSION["logged_user"] = $user;
+      unset($_SESSION['login']);
+      unset($_SESSION['error']);
+    }
+    else {
+      $_SESSION['error'] = "Wrong password!";
+    }
+  }
+  else
   {
-    $_SESSION["logged_user"] = $user;
-    unset($_SESSION['error']);
-  }
-  else {
-    $_SESSION['error'] = "Wrong password!";
+    $_SESSION['error'] = "You must fill both fields!";
   }
 }
-else
-{
-  $_SESSION['error'] = "You must fill both fields!";
+else if(isset($_POST['logout'])) {
+  $_SESSION = array();
+  session_destroy();
+  header("location: index.php");
 }
+
 header("location: index.php");
 ?>
